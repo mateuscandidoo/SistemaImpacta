@@ -1,32 +1,25 @@
 package br.com.sistemaimpacta.model;
 
-import br.com.sistemaimpacta.exceptions.QuantidadeMaximaParticipantesInvalidaException;
-
+import br.com.sistemaimpacta.exceptions.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public abstract class Acao {
-    private int id;
     private String titulo;
     private String descricao;
     private LocalDateTime data;
     private int maximoParticipantes;
-    private List<Voluntario>  voluntariosInscritos;
+    private List<Voluntario> voluntariosInscritos;
 
     public Acao(String titulo, String descricao, LocalDateTime data, int maximoParticipantes) {
-
-        if(maximoParticipantes <= 0){
-            throw new QuantidadeMaximaParticipantesInvalidaException("A quantidade maxima de participantes não pode ser <= 0");
+        if (maximoParticipantes <= 0) {
+            throw new QuantidadeMaximaParticipantesInvalidaException("A quantidade máxima de participantes não pode ser <= 0");
         }
-        else{
-            this.maximoParticipantes = maximoParticipantes;
-        }
+        this.maximoParticipantes = maximoParticipantes;
         this.titulo = titulo;
         this.descricao = descricao;
         this.data = data;
         this.voluntariosInscritos = new ArrayList<>();
-
     }
 
     public String getTitulo() {
@@ -48,8 +41,12 @@ public abstract class Acao {
     public List<Voluntario> getVoluntariosInscritos() {
         return voluntariosInscritos;
     }
-    public boolean acaoLotada(){
+
+    public boolean acaoLotada() {
         return this.voluntariosInscritos.size() >= this.maximoParticipantes;
     }
+
     public abstract int calcularPontuacao();
+
+    public abstract String getAtributosEspecificos();
 }
