@@ -167,7 +167,36 @@ public class ImpactaTest {
         });
     }
 
+    @Test
+    @DisplayName("Deve listar voluntarios ordenados por pontuação e desempenho")
+    public void deveListarVoluntariosOrdenados(){
 
 
+        impacta.cadastrarVoluntario("Ana", "ana@gmail.com", "101");
+        impacta.cadastrarVoluntario("Carlos", "carlos@gmail.com", "102");
+        impacta.cadastrarVoluntario("Mayke","maykewillyan1@gmail.com","103");
 
+
+        int idPlantio = impacta.cadastrarPlantio("Plantio", "Desc", "2026-08-12T10:00:00", 10, 10);
+        int idMutirao = impacta.cadastrarMultirao("Mutirão", "Desc", "2026-08-12T10:00:00", 10, 2);
+
+        impacta.inscreverVoluntario("maykewillyan1@gmail.com", idPlantio);
+
+        impacta.inscreverVoluntario("ana@gmail.com", idMutirao);
+        impacta.inscreverVoluntario("carlos@gmail.com", idMutirao);
+
+        String[] ranking = impacta.listarVoluntarios();
+
+        assertEquals(3,ranking.length);
+
+        assertTrue(ranking[0].contains("Mayke"));
+        assertTrue(ranking[0].contains("Pontos: 25"));
+
+        assertTrue(ranking[1].contains("Ana"));
+        assertTrue(ranking[1].contains("Pontos: 8"));
+
+        assertTrue(ranking[2].contains("Carlos"));
+        assertTrue(ranking[2].contains("Pontos: 8"));
+
+    }
 }
