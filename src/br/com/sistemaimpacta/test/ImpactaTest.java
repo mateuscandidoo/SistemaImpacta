@@ -20,7 +20,7 @@ public class ImpactaTest {
     }
 
 
-    //metodos de cadastro
+    
     @Test
     @DisplayName("deve criar voluntario")
     public void deveCriarVoluntario(){
@@ -74,7 +74,7 @@ public class ImpactaTest {
 
     }
 
-    //Metodos de inscrição
+    
 
     @Test
     @DisplayName("Deve inscrever voluntario na Ação")
@@ -130,7 +130,7 @@ public class ImpactaTest {
     }
 
 
-    //Metodos de Exibição
+    
 
     @Test
     @DisplayName("Deve exibir o voluntario")
