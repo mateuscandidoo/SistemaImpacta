@@ -39,7 +39,7 @@ public class Impacta {
     public String[] listarVoluntarios() {
         List<Voluntario> listaVoluntarios = new ArrayList<>(voluntarios.values());
 
-        // Ordenação decrescente por pontuação e desempate por nome (ordem alfabética)
+       
         listaVoluntarios.sort((v1, v2) -> {
             if (v1.getPontuacaoImpacto() != v2.getPontuacaoImpacto()) {
                 return Integer.compare(v2.getPontuacaoImpacto(), v1.getPontuacaoImpacto());
